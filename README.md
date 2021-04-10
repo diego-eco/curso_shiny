@@ -1,2 +1,3 @@
-# curso_hac
-Curso Shiny Apps &amp; R 
+# Curso Curso Shiny Apps & R 
+
+Repositorio del curso.

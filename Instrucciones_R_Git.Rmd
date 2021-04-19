@@ -1,0 +1,155 @@
+---
+title: "Instalando R, R Studio y Github Desktop"
+author: "Diego López Tamayo ^[El Colegio de México, diego.lopez@colmex.mx]"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+  html_document:
+    df_print: paged
+    highlight: tango
+    theme: simplex
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+header:
+- \usepackage{amsmath}
+- \usepackage[spanish]{babel}
+- \selectlanguage{spanish}
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = FALSE, message = FALSE, fig.pos = "H")
+```
+
+---
+
+$$
+\text{ }
+$$
+
+Para poder utilizar R y R Markdown para poder crear y desplegar Shiny Apps necesitamos tener instalados:
+
+- R (la versión más reciente en Abril 2020: 4.0.5)
+- R Studio (la versión más reciente en Abril 2020: 1.4.1106)
+- R Tools (Windows) & Xcode (MacOS)
+
+A continuación se detallan los pasos:
+
+\newpage
+
+# Pasos para instalar en Windows
+
+## 1. Instalar R en Windows
+
+R es un lenguaje de programación que senecesita instalarse en tu computadora (es como instalar cualquier
+otro programa, como Word)
+
+- Entre al siguiente enlace [CRAN Itam R Download](https://cran.itam.mx/).
+- Haga clic en el enlace *Download R for Windows* (Descargar R para Windows) en la parte superior de la página.
+- Haga clic en el enlace  *install R for the first time* (instalar R por primera vez) en la parte superior de la página.
+- Haga clic en *Download R for Windows* (Descargar R para Windows) y guarde el archivo ejecutable en algún lugar de su computadora.
+- Ejecute el archivo .exe y siga las instrucciones de instalación.  Recomendable **instalar las versiones de 32 y 64 bits**
+- En algún punto de la instalación le pregunta sobre qué componentes instalar, seleccione todas las casillas.
+- Si aparece la pregunta ¿Desea personalizar si instalación? seleccione "No (Accept Defaults)". Si no aparece no hay problema, depende de la versión de R. No es necesario crear un Desktop Shorcut ni Quick Launch Shorcut.
+
+Esto instalará la aplicación de R en su computadora, verá que en su carpeta de aplicaciones queda disponible R app. Sin embargo esta no es la mejor forma de utilizar R, queremos tener una interfaz más amigable y gráfica, un **entorno de desarrollo integrado** (IDE en inglés). Por lo tanto procedemos a instalar **R Studio**.
+
+## 2. Instalar R Studio en Windows
+
+- Entre al siguiente enlace [Instalar R Studio](https://rstudio.com/products/rstudio/download/)
+- Seleccione la versión R Studio Desktop Free y optima el botón de Descargar (Download).
+- Hasta arriba en la pantalla se mostrará la versión más reciente para su equipo y un botón de descarga. Oprima el botón de Download, ejecute el archivo .exe y siga las instrucciones de instalación.
+- Esta segunda instalación es automática, sólo siga los pasos y encontrará la aplicación de R Studio en sus aplicaciones.
+
+## 3 Instalar RTools en Windows
+
+Si algunos paquetes R no se instalan correctamente en Windows por necesitar algunos elementos adicionales para su compilación, se recomienda que se instale la última versión de “Rtools”. RTools que es una librería adicional para Windows que permite a R "reconstruir" las librerías que bajamos de CRANpara que funcionen en la versión de R que tenemos instalada en nuestra computadora.
+
+- Entre al siguiente enlace [Instalar R Tools](https://cran.r-project.org/bin/windows/Rtools/)
+- Seleccione la versión *On Windows 64-bit: rtools40-x86_64.exe * oprima el botón de Descargar (Download).
+- Ejecute el archivo .exe y **seleccione el mismo directorio de instalación que donde fue instalado la paquetería de R: Probablemente sea** `C:\R\R-4.0.3` **o algo similar.**
+- Siga el resto de instrucciones de instalación.
+
+
+# Pasos para instalar en MacOS
+
+## 1. Instalar R en Mac
+
+- Entre al siguiente enlace [CRAN Itam R Download](https://cran.itam.mx/).
+- Haga clic en el enlace Download R for (Mac) OS X (Descargar R para Mac) en la parte superior de la página.
+- En la página verá los lanzamientos más recientes de R para Mac, seleccione el más reciente (o el más reciente para su sistema operativo)
+- Al seleccionar, comenzará a descargar un paquete de instalación .pkg
+- Ejecute el archivo .pkg y siga las instrucciones de instalación. Deje todas las configuraciones predeterminadas en las opciones de instalación.
+- En algún punto de la instalación le pregunta sobre qué componentes instalar, seleccione todas las casillas.
+- Si aparece la pregunta ¿Desea personalizar si instalación? seleccione "No (Accept Defaults)". Si no aparece no hay problema, depende de la versión de R. No es necesario crear un Desktop Shorcut ni Quick Launch Shorcut.
+
+Esto instalará la aplicación de R en su computadora, verá que en su carpeta de aplicaciones queda disponible R app. Sin embargo esta no es la mejor forma de utilizar R, queremos tener una interfaz más amigable y gráfica, un **entorno de desarrollo integrado** (IDE en inglés). Por lo tanto procedemos a instalar **R Studio**.
+
+## 2. Instalar R Studio en MacOS
+
+- Entre al siguiente enlace [Instalar R Studio](https://rstudio.com/products/rstudio/download/)
+- Seleccione la versión R Studio Desktop Free y optima el botón de Descargar (Download).
+- Hasta arriba en la pantalla se mostrará la versión más reciente para su equipo y un botón de descarga. Oprima el botón de Download, ejecute el archivo .exe y siga las instrucciones de instalación.
+- Esta segunda instalación es automática, sólo siga los pasos y encontrará la aplicación de R Studio en sus aplicaciones.
+
+## 3. Instalar Xcode Command Line Tools en MacOS
+
+RTools que es una librería adicional para Windows que permite a R "reconstruir" las librerías que bajamos de CRAN para que funcionen en la versión de R que tenemos instalada en nuestra computadora. **No existe equivalente para Mac** porque estas funciones vienen en su mayoría incluidas con las funciones básicas del sistema operativo. Pero hay algunas funciones adicionales que hay que instalar para usuarios como nosotros que estamos instalando y trabajando con lenguajes de programación. 
+
+Para instalar estas funciones adicionales necesitamos instalar un paquete de herramientas de Xcode (el programa de desarrollo para MacOS y iOS). Es muy sencillo pero se necesita instalar desde la Terminal 
+
+- Buscar en la aplicación **Terminal** dentro de tus aplicaciones o a través de Spotlight y al abrirla te aparecerá una ventana como esta (puede ser que antes del símbolo `~` aparezca tu nombre de usuario). Sólo necesitas copiar y pegar el siguiente comando y dar Enter.
+
+![Instalar desde terminal](D:/GitHub/Economics_Toolkit/Instrucciones_R_Latex/1.jpg){width=50%}
+.  
+
+- Probablemente (dependiendo de la versión de MacOS) aparecerá una ventana como la siguiente preguntando si sólo queremos instalar Command Line Tools u obtener Xcode completo. No es necesario instalar Xcode, sólo seleccionar Instalar. Tomará unos minutos y queda todo listo, reinicie el equipo.
+
+![Instalar desde terminal](D:/GitHub/Economics_Toolkit/Instrucciones_R_Latex/2.jpg){width=50%}
+.
+
+# Cuenta en GitHub y GitHub Desktop
+
+
+## 1. Crear cuenta
+
+- Entre al siguiente enlace [Git Hub](https://github.com/)
+- Seleccione "Sign Up" en la parte superior derecha de la pantalla:
+
+![Git1](D:/GitHub/curso_shiny/img/git1.png){width=50%}
+
+- Introduzca su Username (se puede cambiar después), correo y contraseña.
+
+- En la siguiente pantalla, preguntará algunos detalles de su perfil, escoga libremente.
+
+![Git2](D:/GitHub/curso_shiny/img/git2.png){width=50%}
+
+
+- Llegará un correo de verificación que deberá aceptar.
+
+- Una vez verificado. Seleccione "Skip this for now" en la pantalla con la pregunta "What do you want to do first"?. Llegará a una pantalla como la siguiente. Continuaremos con el uso de Github en el curso.
+
+![Git3](D:/GitHub/curso_shiny/img/git3.png){width=50%}
+
+\newpage
+
+
+## 2. Descargar GitHub Desktop
+
+- Entre al siguiente enlace [Git Hub Desktop](https://desktop.github.com/)
+
+- Descargue la versión correspondiente para su equipo. El propio sitio pone al centro la versión que recomienda.
+
+- Siga las instrucciones de instalación y al finalizar, verá una ventana como la siguiente:
+
+![Git4](D:/GitHub/curso_shiny/img/git4.png){width=50%}
+
+- Introduzca el usuario y contraseña con los cuáles se registró en GitHub.
+
+
+
+
+
+

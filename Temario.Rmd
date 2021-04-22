@@ -1,5 +1,5 @@
 ---
-title: "Curso: Introducción Shiny App Development."
+title: "Curso: Introducción Shiny App Development"
 
 date: " "
 output: pdf_document

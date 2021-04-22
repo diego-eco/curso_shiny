@@ -102,12 +102,12 @@ Para instalar estas funciones adicionales necesitamos instalar un paquete de her
 
 - Buscar en la aplicación **Terminal** dentro de tus aplicaciones o a través de Spotlight y al abrirla te aparecerá una ventana como esta (puede ser que antes del símbolo `~` aparezca tu nombre de usuario). Sólo necesitas copiar y pegar el siguiente comando y dar Enter.
 
-![Instalar desde terminal](C:/GitHub/Economics_Toolkit/Instrucciones_R_Latex/1.jpg){width=50%}
+![Instalar desde terminal](C:/GitHub/curso_shiny/figures/1.jpg){width=50%}
 .  
 
 - Probablemente (dependiendo de la versión de MacOS) aparecerá una ventana como la siguiente preguntando si sólo queremos instalar Command Line Tools u obtener Xcode completo. No es necesario instalar Xcode, sólo seleccionar Instalar. Tomará unos minutos y queda todo listo, reinicie el equipo.
 
-![Instalar desde terminal](C:/GitHub/Economics_Toolkit/Instrucciones_R_Latex/2.jpg){width=50%}
+![Instalar desde terminal](C:/GitHub/curso_shiny/figures/2.jpg){width=50%}
 .
 
 # Cuenta en GitHub y GitHub Desktop
@@ -118,20 +118,20 @@ Para instalar estas funciones adicionales necesitamos instalar un paquete de her
 - Entre al siguiente enlace [Git Hub](https://github.com/)
 - Seleccione "Sign Up" en la parte superior derecha de la pantalla:
 
-![Git1](C:/GitHub/curso_shiny/img/git1.png){width=50%}
+![Git1](C:/GitHub/curso_shiny/figures/git1.png){width=50%}
 
 - Introduzca su Username (se puede cambiar después), correo y contraseña.
 
 - En la siguiente pantalla, preguntará algunos detalles de su perfil, escoga libremente.
 
-![Git2](C:/GitHub/curso_shiny/img/git2.png){width=50%}
+![Git2](C:/GitHub/curso_shiny/figures/git2.png){width=50%}
 
 
 - Llegará un correo de verificación que deberá aceptar.
 
 - Una vez verificado. Seleccione "Skip this for now" en la pantalla con la pregunta "What do you want to do first"?. Llegará a una pantalla como la siguiente. Continuaremos con el uso de Github en el curso.
 
-![Git3](C:/GitHub/curso_shiny/img/git3.png){width=50%}
+![Git3](C:/GitHub/curso_shiny/figures/git3.png){width=50%}
 
 \newpage
 
@@ -144,7 +144,7 @@ Para instalar estas funciones adicionales necesitamos instalar un paquete de her
 
 - Siga las instrucciones de instalación y al finalizar, verá una ventana como la siguiente:
 
-![Git4](C:/GitHub/curso_shiny/img/git4.png){width=50%}
+![Git4](C:/GitHub/curso_shiny/figures/git4.png){width=50%}
 
 - Introduzca el usuario y contraseña con los cuáles se registró en GitHub.
 

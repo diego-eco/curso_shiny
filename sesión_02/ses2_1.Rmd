@@ -1,0 +1,47 @@
+---
+title: "Introducción Shiny App Development"
+author: ''
+date: "30/04/2021"
+output:
+  ioslides_presentation:
+    logo: ../figures/dlt.png
+    widescreen: yes
+    incremental: yes
+subtitle: Sesión 2
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Configuración y directorios
+
+rm(list = ls())
+pacman::p_load(tidyverse,
+               gridExtra,
+               cowplot)
+datos <- "C:/GitHub/curso_shiny/figures"
+figures <- "C:/GitHub/curso_shiny/figures"
+```
+
+
+
+# Conceptos y estructura de un sitio web.
+
+## Funcionamiento de una página web www.misitio.com
+
+```{r echo=FALSE, fig.height=3, fig.width=4}
+imagen1 <- ggdraw() + draw_image(paste(figures,"tidyverse2.png",sep="/"))
+imagen1
+```
+
+Shinyapps.io es un servicio en línea para alojar aplicaciones Shiny en la nube. RStudio se encarga de todos los detalles del alojamiento de la aplicación y el mantenimiento del servicio.
+
+* Conceptos y estructura de un sitio web:
+  + Host, Server, Frontend, Backend
+* Estructura de archivos de Shiny App: UI, Server, app, global, css.
+* Creación de repositorio en Github y *commit* de R project de Shiny App vacía.
+
+

@@ -1,0 +1,758 @@
+---
+title: "Introducción Shiny App Development"
+author: ''
+date: "23/04/2021"
+output:
+  slidy_presentation:
+    incremental: yes
+  ioslides_presentation:
+    logo: ../figures/dlt.png
+    widescreen: yes
+    incremental: yes
+    smaller: yes
+subtitle: Sesión 1
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+# Configuración y directorios
+
+rm(list = ls())
+pacman::p_load(tidyverse,
+               gridExtra,
+               cowplot)
+datos <- "C:/GitHub/curso_shiny/figures"
+figures <- "C:/GitHub/curso_shiny/figures"
+```
+
+# Introducción.
+
+## Alcance del curso.
+
+- Proporcionar los conceptos y herramientas para que el usuario pueda implementar por su cuenta y/o en equipo una aplicación de visualización de datos a través de la librería Shiny del lenguaje R.  
+
+- Al final de curso el estudiante será capaz de desplegar en la web una aplicación Shiny
+con visualización interactiva de datos utilizando las herramientas de **shinydashboard**.
+
+## Sobre el curso:
+
+- Cada sesión tiene el propósito de practicar lo visto en la semana. Es un curso constructivo, todo tiene un propósito en el funcionamiento de una aplicación Shiny.
+
+- Las sesiones se graban y estarán disponibles para revisarlas.
+
+- El material del curso, incluidas las presentaciones, bases y código disponibles en el repositorio de Github (comentarios sobre el uso de Git al final de la sesión.)
+
+# Entendiendo Shiny
+
+## Entendiendo qué es una Shiny App.
+
+- Es un paquete de R destinado al **desarrollo de aplicaciones interactivas** de visualización de datos. Permite la instalación de una aplicación web corriendo en R en un servidor, y que podremos personalizar de forma sencilla sin conocer la sintaxis de HTML, CSS o Javascript.
+
+- HTML, CSS o Javascript son los lenguajes base de un web-developer, quien puede desarrollar sitios desde cero. Al momento de buscar mostrar datos interactivos se recurre a librerías de Java y más recientemente Python.
+
+- Shiny es un puente entre estos dos mundos, liberando a los analistas de datos de las tareas de desarrollo web y ofreciendo herramientas que "traducen" **automáticamente** nuestra aplicación a HTML, CSS o Javascript.
+
+- En este sentido, estamos sujetos a las opciones de personalización de Shiny. Para ir más allá de lo que ofrece Shiny, tenemos que complementar/modificar con nuestro código HTML, CSS o Javascript (fuera del objetivo del curso).
+
+## Necesario para desarrollo de Shiny App
+
+- Manipulación de dataframes. (Sesión 1)
+- Visualización a través de la librerías disponibles en CRAN (librerías oficiales). (Sesión 1 y 2)
+- Estructura general: `Header, Sidebar & Body`. (Sesión 2 y 3)
+- Controles y entrada de usuario: `select, slider, input`. (Sesión 3 y 4)
+- Funciones render. (Sesión 4)
+- Funciones reactivas: `function(input, output)`. (Sesión 4 y 5)
+- Personalización y hacerlo bonito (Sesión 5 y 6)
+
+# Repaso de R y Rstudio.
+
+## Tidyverse. La librería base
+
+```
+install.packages("tidyverse")
+```
+
+```{r echo=FALSE, fig.height=3, fig.width=4}
+imagen1 <- ggdraw() + draw_image(paste(figures,"tidyverse2.png",sep="/"))
+imagen1
+```
+
+## Tidyverse. La librería base
+
+- ggplot2, para visualización de datos.
+- dplyr, para manipulación de datos.
+- tidyr, para ordenar los datos.
+- readr, para la importación de datos.
+- stringr, para strings.
+- forcats, para variables factor (*factors*).
+
+- **Instala en R pero no carga:**
+
+- haven, para datos de SPSS, Stata, SAS.
+- readxl, para hojas .xls and .xlsx.
+- lubridate, para trabajar con fechas.
+
+## Actividades del día:
+
+- Tipos de archivos de datos admitidos en R: formatos, codificación y memoria
+
+  - Motivo: Capacidades de Shiny para almacenar archivos.
+
+- Manipulación de dataframes con tidyverse: 
+
+  - Preparar los datos para tablas o gráficas.
+  
+- Visualización a través de la librería ggplot/plotly.
+
+  - Conocer los argumentos principales de las funciones para después hacerlas *reactivas*.
+
+  - Conocer las capacidades y limitaciones de visualización de datos.
+
+- Revisión de Shiny App muestra: Elementos, capacidades y limitaciones de Shiny
+
+
+
+
+
+
+
+
+
+
+# Inicio de trabajo en R Studio.
+
+## R Markdown
+
+Trabajaremos en archivos Rmd (R Markdown). Este formato de archivo permite combinar código de R interactivo con texto en formatos. Es una mezcla de .r (Script R) + .doc (Word) + .ppt (Power Point).
+
+```{r}
+
+rm(list = ls()) # Limpieamos el environment
+
+data <- "C:/GitHub/curso_shiny/data"
+figures <- "C:/GitHub/curso_shiny/figures"
+
+# install.packages("pacman") # Pacman nos permite instalar/cargar otras librerías.
+
+pacman::p_load(tidyverse,
+               kableExtra,
+               haven
+               )
+(.packages()) # Esto nos muestra qué librerías están cargadas.
+```
+
+
+
+
+
+
+
+
+
+
+## Tipos de datos
+
+Conocer las distintas clases de datos que R maneja.
+
+```{r}
+class(123) 
+class("123") # Clase string o character
+class("Hola")
+class(TRUE) # Clase lógica
+x <- 1
+class(x) # Objeto de clase numérica
+```
+
+
+<!---
+A veces los errores vienen de intentar operaciones con clases de datos que no son compatibles.
+-->
+
+
+
+
+
+
+
+
+## Factores
+
+```{r}
+sex <- factor(c("male", "female", "female", "male","male"))
+class(sex)
+levels(sex)
+nlevels(sex)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Exploración de dataframes.
+
+Usaremos la librería [penguins](https://github.com/allisonhorst/palmerpenguins) que contiene datos sobre pingüinos en la antártica como ejemplo.  
+
+Después usaremos bases "reales" con más problemas.
+
+```{r}
+library(palmerpenguins)
+data("penguins") # Nos muestra "promises" en ambiente. Son objetos aún no cargados en memoria.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Exploración de dataframes.
+
+```{r}
+glimpse(penguins) # Resumen rápido de las columbas y su clase.
+# head(penguins) # Nos muestra las 6 primeras observaciones.
+# names(penguins) # Nos da los nombres de las columnas
+# summary(penguins) # Estadística descriptiva de acuerdo a la clase.
+```
+
+
+
+
+
+
+
+
+
+
+
+## Piping (encadenando funciones)
+
+El operador pipeline `%>%` nos permite concatenar múltiples operaciones `dplyr` para manejar dataframes.
+
+Es la manera de R de componer funciones 
+
+$$
+h(g(f(x)))
+$$
+
+Digamos que queremos aplicar 3 funciones a la variable x.
+
+```
+third(second(first(x)))
+```
+
+Una forma más sencilla de escribir esto en R es:
+
+```
+first(x) %>% second(x) %>% third(x)
+```
+<!---
+Notar que x debe ser compatible con las funciones. Si la primer función convierte un objeto *numérico* a *string* y la segunda función es una función numérica, habrá un error.
+-->
+
+
+
+
+
+
+
+
+
+
+
+## Utilizando pipes `%>%`
+
+```{r}
+# Notar que utilizamos un argumento posicional en head()
+head(penguins,4)
+```
+
+
+```{r}
+# Algunas librerías comparten nombres de funciones, select es común en varias librerías.
+# Para evitar problemas, podemos especificar la librería de la cuál queremos usar la función.
+
+penguins %>% dplyr::select(species,sex) %>% head(4)
+```
+
+
+
+
+
+
+
+
+
+
+## Nota sobre documentación de funciones
+
+Para conocer la documentación y argumentos de una función en R. Podemos usar la ventana de *help* en R Studio, o hacer una búsqueda en Google del tipo:
+
+```
+R first rows of dataframe
+R head() 
+R head() arguments
+```
+
+
+
+
+
+
+
+
+
+
+## count
+
+```{r}
+penguins %>% count(species, sort = TRUE)
+# penguins %>% count(species,island, sort = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+## filter, summarise
+
+summarize nos permite aplicar funciones para crear columnas "resumen".
+
+```{r}
+penguins %>%  
+  summarise(masa_corporal_promedio = mean(body_mass_g, na.rm=TRUE),
+                        numero_pinguinos = n())
+
+# Notar que algunas funciones no saben qué hacer cuando hay valores NA, tenemos que decirle que ignore esos datos.
+```
+
+Podemos filtrar antes de obtener nuestras columnas resumen.
+
+```{r}
+penguins %>%
+  filter(island == "Torgersen") # Si es string, se pone entre comillas " "
+```
+
+
+
+
+
+
+
+
+
+
+
+## group_by
+
+Muchas veces, queremos obtener estadísticos por grupo: por edad, por sexo, por ciudad...
+
+```{r}
+penguins %>%
+  group_by(island) %>%
+  summarise(masa_corporal_promedio = mean(body_mass_g, na.rm=TRUE),
+            numero_pinguinos = n())
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## Crear y renombrar columnas
+
+```{r}
+# penguins <- para sobreescribir base original con nueva variable
+penguins %>%
+      mutate(nueva_var = body_mass_g / flipper_length_mm) 
+
+# %>%  select(species, island, nueva_var)
+```
+
+
+```{r}
+# rename(nuevo = vejo) 
+penguins %>%
+  rename(especies = species )
+```
+
+## Resumen
+
+Todos los métodos que hemos visto, no modifican la base original. Para modificarla, hay que sobreescribirla o crear una nueva base.
+
+```{r}
+penguins_nueva <- penguins %>% mutate(nueva_var = body_mass_g / flipper_length_mm)
+
+penguins %>%
+      mutate(nueva_var = body_mass_g / flipper_length_mm) -> penguins
+```
+
+
+- Manipular dataframes con `dplyr` será muy importante para preparar nuestros datos para graficar nuestros datos.
+
+- También será importante para dejar listas las tablas que mostremos en Shiny.
+
+
+
+
+
+
+
+
+
+
+
+## ggplot
+
+Será nuestro función base para graficar, dado que tiene mayor personalización que `plot()`y es 100% compatible con Shiny.
+
+```{r fig.height=3, fig.width=4}
+ggplot(penguins)
+```
+
+Notar que la función ggplot crea un "canvas" blanco en el cuál comenzaremos a trabajar.
+
+
+## aesthetics y capas
+
+En el contexto de ggplot, la estética (aesthetics) son las instrucciones que determinan las propiedades visuales de la gráfica. La estética puede incluir las escalas para los ejes (x,y), el color de los datos en el gráfico basado en una propiedad o paleta de color, o el tamaño o la forma de diferentes geometrías.
+
+```
+ggplot(penguins, aes(x=bill_length_mm, y=bill_depth_mm))
+```
+
+```{r echo=FALSE, fig.height=4, fig.width=6}
+imagen1 <- ggdraw() + draw_image(paste(figures,"penguins.png",sep="/"))
+imagen2 <- ggplot(penguins, aes(x=bill_length_mm, y=bill_depth_mm))
+plot_grid(imagen1,imagen2)
+```
+
+
+## Capa de dispersión
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() 
+```
+
+## Personalizando los puntos
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, shape = species), size=2) 
+```
+
+
+## Añadiendo labels
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, shape = species), size=2) +
+  labs(x = "Largo de pico", y = "Ancho de pico",
+       title="Gráfico de dispersión",
+       subtitle="Ancho y largo del pico")
+```
+
+## Cerrando con un tema diferente
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, shape = species), size=2) +
+  labs(x = "Largo de pico", y = "Ancho de pico",
+       title="Gráfico de dispersión", subtitle="Ancho y largo del pico",
+       col = "Especies", shape = "Especies")+ 
+  theme_minimal() 
+```
+
+
+
+
+
+
+
+
+## Lo mismo pero ahora en Plotly
+
+[plotly](https://plotly.com/r/) La biblioteca de gráficos R de Plotly crea gráficos interactivos con calidad de publicación listos para convertir a html ()
+
+
+```{r, message=FALSE, warning=FALSE}
+library(plotly)
+
+plot_ly(data = penguins, x = ~bill_length_mm, y = ~bill_depth_mm, type = 'scatter',
+        color = ~species, symbol = ~species,marker = list(size=10)) %>% 
+  layout(title = 'Gráfico de dispersión. Ancho y largo del pico',
+         yaxis = list(title = "Largo de pico"),xaxis = list(title = "Ancho de pico"))
+```
+
+
+## Plotly puede convertir objetos ggplot en plotly (casi automático, usar con cuidado.)
+
+```{r}
+graph <-ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, shape = species), size=2) +
+  labs(x = "Largo de pico", y = "Ancho de pico",
+       title="Gráfico de dispersión", subtitle="Ancho y largo del pico",
+       col = "Especies", shape = "Especies")+ theme_minimal() 
+
+ggplotly(graph)
+```
+
+
+
+
+
+
+
+## Debemos explorar la función ggplot
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+bar <- ggplot(penguins, aes(x=species)) + geom_bar(aes(fill=species))+
+  labs(x = "", y = "Frecuencia",
+       title="Gráfico de barras",subtitle="Frecuencia por especie", fill = "Especies") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) + theme_minimal() 
+bar
+ggsave(paste0(figures,"/","barras.png"), bar)
+```
+
+
+
+
+
+
+
+
+## Lo mismo pero ahora en Plotly
+
+```{r}
+# Creamos la base
+penguins %>%
+      group_by(species) %>% count() -> ping_plotly
+
+# Graficamos
+plot_ly(ping_plotly, x = ~species, y = ~n, color = ~species, type = 'bar') %>% 
+  layout(title = 'Gráfico de barras. Frecuencia por especie'
+         ,yaxis = list(title = 'Número'),xaxis = list(title = ''))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Importando bases de datos desde Dropbox
+
+## Fuente de datos:  Banco de Información Económica (BIE) del INEGI.
+
+```{r echo=FALSE}
+imagen1 <- ggdraw() + draw_image(paste(figures,"bie.png",sep="/"))
+imagen1
+```
+
+
+
+
+
+
+
+
+
+
+## Importar el archivo desde Dropbox
+
+```{r}
+# install.packages('rdrop2')
+library(rdrop2)
+```
+
+Tenemos que autenticarnos:
+
+```{r}
+drop_auth() # Lanza el navegador para autenticarnos (tenemos que tener abierta la sesión de Dropbox)
+
+token <- drop_auth() # Guardamos las claves de autenticación en un objeto
+saveRDS(token,"token.rds") # Guardamos en un archivo
+```
+
+```
+# Si ya tenemos el archivo token.rds
+drop_auth(rdstoken = "/path/to/token.rds")
+```
+
+
+```{r}
+drop_dir() # Nos muestra el directorio base (root).
+# str(drop_acc() %>% data.frame()) # Información sobre la cuenta vinculada
+```
+
+
+
+
+
+
+
+
+
+
+
+## Dos procesos para trabajo en equipo: 
+
+1) Primer proceso para trabajo en equipo: 
+
+Descargar el archivo (para limpieza)
+
+```{r}
+drop_download("BIE_BIE20210423011027.csv",
+              local_path  = data,
+              overwrite = TRUE)
+
+# Utilizando read.csv 
+base_sucia <- read.csv(paste(data,"BIE_BIE20210423011027.csv",sep="/"), 
+                    header = F,
+                    skip = 2, 
+                    nrows = 195,
+                    col.names = c("Periodo", "Desempleo", "Inflacion"))
+
+# Utilizando read_csv
+base_sucia <- read_csv(paste(data,"BIE_BIE20210423011027.csv",sep="/"), 
+                    col_names = c("Periodo", "Desempleo", "Inflacion"),
+                    skip = 2)
+base_sucia %>% slice(1:n()-1) -> base_limpia
+
+tail(base_sucia)
+tail(base_limpia)
+```
+
+Ya está limpia la base, la subimos a Dropbox
+
+```{r}
+write_csv(base_limpia, 'base_limpia.csv') # La guardamos como csv
+drop_upload('base_limpia.csv') # Subimos a Dropbox, sobreescribe el anterior
+drop_dir() # Revisamos que ya está en Dropbox
+```
+
+
+
+
+
+
+
+
+
+## Segundo proceso para trabajo en equipo: 
+
+2) Descargar directo el archivo (ya limpio)
+
+```{r}
+sie <- drop_read_csv("base_limpia.csv")
+glimpse(sie)
+```
+
+
+
+
+
+
+
+
+
+## Trabajando con fechas
+
+```{r}
+library(lubridate) 
+sie$Periodo <- ymd(sie$Periodo, truncated = 2) # Detecta strings del tipo "2012-06-01" "2012/06/01"
+# La opción truncated revisa por fechas "incompletas", ver documentación. 
+glimpse(sie)
+```
+
+
+
+
+
+
+
+
+
+
+## Gráfica para revisar
+
+```{r}
+desem_inflac <- sie %>% ggplot(aes(x=Periodo)) + 
+  geom_line(aes(y=Desempleo, col = "Desempleo")) + 
+  geom_line(aes(y=Inflacion, col = "Inflación")) +
+  labs(x = "", y = "", #-- Nombre a los ejes
+       title = "México: inflación y desempleo, 2005 - 2021", #-- Nombre a la grafica
+       subtitle = ("Porcentajes"), #-- Subtítulo 
+       caption = "Fuente: elaboración propia con datos de INEGI") + #-- Nota al pie
+    scale_x_date(date_breaks = "1 year", #-- Indicar cada cuántos años aparecen en el eje
+               date_labels = "%Y") + #-- Formato de fecha
+  theme_bw() + #-- Un tema en específico
+  theme(axis.text.x = element_text(angle = 90, hjust = 1), #-- Rotar la etiqueta del eje x
+        legend.position = c(.1, .8), #-- Determinar la posición del cuadro de  etiquetas
+        legend.background = element_rect(fill = "transparent") ) + #-- transparente del cuadro de et.
+  scale_color_brewer(name= NULL, #-- Nombre al cuadro de etiquetas
+                     palette = "Dark2") #-- Paleta de colores
+desem_inflac
+ggsave(paste0(figures,"/","desem_inflac.png"), bar)
+```
+
+
+
+
+## Lo mismo pero con Plotly
+
+Notar la similitud de capas que tiene ggplot y plotly con la diferencia que el ggplot utilizamos (+) y en plotly (%>%)
+
+```{r message=FALSE, warning=FALSE}
+plot_ly(sie) %>%
+  add_trace(sie, x = ~Periodo, y = ~Desempleo,
+            type = 'scatter', mode = 'lines',name = "Desempleo")%>%
+  add_trace(sie, x = ~Periodo, y = ~Inflacion,
+            type = 'scatter', mode = 'lines',name = "Inflacion") %>%
+  layout(title = "\nMéxico: inflación y desempleo, 2005 - 2021",
+         xaxis = list(title = ""),
+         yaxis = list (title = "Porcentaje %"))%>%
+  layout(yaxis = list(titlefont = list(size = 10), tickfont = list(size = 10)) ) %>%
+layout(legend = list(orientation = 'h'))
+```
+
+
+

@@ -1,0 +1,34 @@
+---
+title: "Introducción Shiny App Development"
+author: ''
+date: "7/05/2021"
+output:
+  ioslides_presentation:
+    logo: ../figures/dlt.png
+    widescreen: yes
+    incremental: yes
+subtitle: Sesión 3
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Configuración y directorios
+
+rm(list = ls())
+pacman::p_load(tidyverse,
+               gridExtra,
+               cowplot)
+datos <- "C:/GitHub/curso_shiny/figures"
+figures <- "C:/GitHub/curso_shiny/figures"
+```
+
+# Introducción.
+
+* Funciones básicas de Shiny: Convirtiendo R a HTML.
+* Introducción a *shinydashboard:* Estructura general: Header, Sidebar & Body.
+* Layout de aplicación: Navlist y Grid Layout.
+* Creación de primer Shiny App. Página de bienvenida.

@@ -24,18 +24,19 @@ pacman::p_load(tidyverse,
                cowplot)
 datos <- "C:/GitHub/curso_shiny/figures"
 figures <- "C:/GitHub/curso_shiny/figures"
-```
-
+```   
 
 
 # Conceptos y estructura de un sitio web.
 
 ## Funcionamiento de una página web www.misitio.com
 
-```{r echo=FALSE, fig.height=3, fig.width=4}
-imagen1 <- ggdraw() + draw_image(paste(figures,"tidyverse2.png",sep="/"))
+```{r echo=FALSE, fig.height=5, fig.width=6}
+imagen1 <- ggdraw() + draw_image(paste(figures,"domain-hosting-web.jpg",sep="/"))
 imagen1
 ```
+
+## ¿Dónde entra Shiny y Shiny IO?
 
 Shinyapps.io es un servicio en línea para alojar aplicaciones Shiny en la nube. RStudio se encarga de todos los detalles del alojamiento de la aplicación y el mantenimiento del servicio.
 

@@ -138,10 +138,10 @@ figures <- "C:/GitHub/curso_shiny/figures"
 
 # install.packages("pacman") # Pacman nos permite instalar/cargar otras librerías.
 
-pacman::p_load(tidyverse,kableExtra,haven)
+# pacman::p_load(tidyverse,kableExtra,haven)
 
-install.packages("tidyverse")
-library(tidyverse)
+# install.packages("tidyverse")
+# library(tidyverse)
 
 
 (.packages()) # Esto nos muestra qué librerías están cargadas.
@@ -681,7 +681,7 @@ plot_ly(ping_plotly, x = ~species, y = ~n, color = ~species, type = 'bar') %>%
 
 
 
-
+###### HASTA AQUÍ LLEGAMOS EN LA PRIMER SESIÓN, VEREMOS EL RESTO EL PRÓXIMO VIERNES ######
 
 
 
@@ -696,7 +696,6 @@ plot_ly(ping_plotly, x = ~species, y = ~n, color = ~species, type = 'bar') %>%
 imagen1 <- ggdraw() + draw_image(paste(figures,"bie.png",sep="/"))
 imagen1
 ```
-
 
 
 
@@ -787,6 +786,8 @@ drop_dir() # Revisamos que ya está en Dropbox
 
 
 
+
+
 ## Segundo proceso para trabajo en equipo: 
 
 2) Descargar directo el archivo (ya limpio)
@@ -841,8 +842,17 @@ desem_inflac <- sie %>% ggplot(aes(x=Periodo)) +
   scale_color_brewer(name= NULL, #-- Nombre al cuadro de etiquetas
                      palette = "Dark2") #-- Paleta de colores
 desem_inflac
-ggsave(paste0(figures,"/","desem_inflac.png"), bar)
+ggsave("desem_inflac.png", desem_inflac)
 ```
+
+
+
+
+
+
+
+
+
 
 
 

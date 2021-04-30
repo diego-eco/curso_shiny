@@ -7,6 +7,7 @@ output:
     logo: ../figures/dlt.png
     widescreen: yes
     incremental: yes
+    smaller: yes
 subtitle: Sesión 2
 always_allow_html: yes
 ---
@@ -15,7 +16,7 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r include=FALSE}
 # Configuración y directorios
 
 rm(list = ls())
@@ -31,18 +32,96 @@ figures <- "C:/GitHub/curso_shiny/figures"
 
 ## Funcionamiento de una página web www.misitio.com
 
+### Hosting
+
+- Es la casa de nuestro sitio web. Es una computadora(s) especial(es) (**servidor(es)**) en algún lugar del mundo siempre funcionando y conectado a internet para que cualquier persona en el mundo que escriba nuestro **dominio: www.misitio.com** en su navegador pueda llegar a nuestro sitio.
+
+  - Shared hosting: más económico, se comparten los recursos con otros sitios web. (GoDaddy, Wix, HostGator)
+  - Virtual private servers: Mayor flexibilidad, control, espacio que un hosting compartido.
+  - Dedicated private servers: Equipos propios que requieren espacio físico pero son totalmente personalizables.
+  
+- Lo que estamos **comprando** es el espació físico en el disco duro + ancho de banda ("bandwith"). Generalmente se interactúa con el hosting a través de un *panel de control*. 
+
+## Funcionamiento de una página web www.misitio.com
+
+### Website / Webpage
+
+- Al contratar un servicio de hosting asociado con un dominio tenemos un espacio vacío donde debemos poner nuestro sitio web. 
+
+- Al referirnos a "sitio web" nos referimos a una **colección de archivos de distintos lenguajes de programación** que son comprendidos por todos los **navegadores** (Chrome, Safari). Por tanto, sin importar de dónde visiten nuestro sitio, podrán interactuar con el contenido de la mejor forma.
+
+- Generalmente los servicios de hosting que contratamos ofrecen una aplicación **web builder** que es una interfaz gráfica para que usuarios sin experiencia en programación puedan crear su sitio web.
+
+## Funcionamiento de una página web www.misitio.com
+
 ```{r echo=FALSE, fig.height=5, fig.width=6}
 imagen1 <- ggdraw() + draw_image(paste(figures,"domain-hosting-web.jpg",sep="/"))
 imagen1
 ```
 
+# Ejemplo de una página web www.misitio.com
+
+
 ## ¿Dónde entra Shiny y Shiny IO?
 
-Shinyapps.io es un servicio en línea para alojar aplicaciones Shiny en la nube. RStudio se encarga de todos los detalles del alojamiento de la aplicación y el mantenimiento del servicio.
+De acuerdo con el sitio de Shiny, tenemos 3 opciones para "desplegar" nuestra aplicación Shiny:
 
-* Conceptos y estructura de un sitio web:
-  + Host, Server, Frontend, Backend
-* Estructura de archivos de Shiny App: UI, Server, app, global, css.
-* Creación de repositorio en Github y *commit* de R project de Shiny App vacía.
+```{r echo=FALSE, fig.height=4, fig.width=6}
+imagen1 <- ggdraw() + draw_image(paste(figures,"shiny1.png",sep="/"))
+imagen1
+```
+
+## ¿Dónde entra Shiny y Shinyapps.io?
+
+- Shinyapps.io es un servicio de (hosting) para alojar aplicaciones Shiny en la nube. 
+
+- Se diferencia de otros servicios de hosting porque puede implementar una sesión virtual de R en la nube. 
+
+- Lo cuál no es posible a través de GoDaddy, Wix etc... Necesitaríamos instalar R en sus servidores ...
+
+- La librería shiny se encarga de generar todos los archivos que conforman el sitio web. 
+
+- R Studio a través de la librería Shiny se encargar de conectarse con Shinyapps.io y subir el sitio.
+
+## Desarrollo de sitio web: Front-end & Back-end
+
+```{r echo=FALSE, fig.height=2, fig.width=4}
+imagen1 <- ggdraw() + draw_image(paste(figures,"front.png",sep="/"))
+imagen1
+```
+
+- **Front: Lado del cliente.** Todo lo que vemos en la pantalla cuando accedemos a un sitio web o aplicación: tipos de letra, colores, adaptación para distintas pantallas (responsiveness), los efectos de movimientos, desplazamientos. HTML, CSS, JavaScript
+
+  - **shinydashboard** lo anterior + Tablas, gráficas (estáticas/interactivas), mapas 
+
+- **Back: Lado del servidor.** Aplicación, base de datos, reglas, seguridad. Se toman los datos, se procesa la información y se envía al usuario. Java, Python, SQL.
+
+  - **R a través de Shinyapps.io:** lo anterior + ggplot(), kable(), plotly()
+
+## Estructura de archivos de Shiny App: UI, Server
+
+Una aplicación Shiny se compone de dos archivos principales:
+
+- User Interface (UI): representa el *front-end* de la aplicación:
+
+  - Muestra las secciones, títulos, textos.
+  - Procesa las funciones `render` y muestra las gráficas, tablas e imágenes.
+
+- Server (serv): representa el *back-end* de la aplicación, se encarga de:
+
+  - Carga las bases de datos, librerías.
+  - Recibir el `input` del usuario y pasarlo a las funciones.
+  - Manda al UI las gráficas, tablas y solicitudes para que se muestren al usuario.
+
+Dependiendo de lo complejo del proyecto, podemos dividir en más archivos nuestra aplicación: UI, Server, app, global, css.
+
+# Revisemos una aplicación Shiny básica.
+
+
+
+
+
+
+
 
 

@@ -3,13 +3,13 @@ title: "Introducción Shiny App Development"
 author: ''
 date: "23/04/2021"
 output:
-  slidy_presentation:
-    incremental: yes
   ioslides_presentation:
     logo: ../figures/dlt.png
     widescreen: yes
     incremental: yes
     smaller: yes
+  slidy_presentation:
+    incremental: yes
 subtitle: Sesión 1
 always_allow_html: yes
 ---
@@ -712,7 +712,9 @@ imagen1
 library(rdrop2)
 ```
 
+
 Tenemos que autenticarnos:
+
 
 ```{r}
 drop_auth() # Lanza el navegador para autenticarnos (tenemos que tener abierta la sesión de Dropbox)
@@ -738,7 +740,18 @@ drop_dir() # Nos muestra el directorio base (root).
 
 
 
+```{r}
+data
+```
 
+```{r}
+"C:/GitHub/curso_shiny/data/BIE_BIE20210423011027.csv"
+```
+
+
+```{r}
+paste(data,"BIE_BIE20210423011027.csv",sep="/")
+```
 
 
 
@@ -754,9 +767,9 @@ drop_download("BIE_BIE20210423011027.csv",
               overwrite = TRUE)
 
 # Utilizando read.csv 
-base_sucia <- read.csv(paste(data,"BIE_BIE20210423011027.csv",sep="/"), 
-                    header = F,
-                    skip = 2, 
+base_limpia <- read.csv(paste(data,"BIE_BIE20210423011027.csv",sep="/"), 
+                    header = F, # Toma las primeras filas como nombres de variables
+                    skip = 2, # Saltarse n filas
                     nrows = 195,
                     col.names = c("Periodo", "Desempleo", "Inflacion"))
 

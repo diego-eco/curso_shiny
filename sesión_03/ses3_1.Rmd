@@ -15,20 +15,122 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r include=FALSE}
 # Configuración y directorios
 
 rm(list = ls())
 pacman::p_load(tidyverse,
                gridExtra,
                cowplot)
-datos <- "C:/GitHub/curso_shiny/figures"
+
 figures <- "C:/GitHub/curso_shiny/figures"
 ```
 
-# Introducción.
+# Conectando con Shinyapp.io
 
-* Funciones básicas de Shiny: Convirtiendo R a HTML.
-* Introducción a *shinydashboard:* Estructura general: Header, Sidebar & Body.
-* Layout de aplicación: Navlist y Grid Layout.
-* Creación de primer Shiny App. Página de bienvenida.
+## Registrando una cuenta
+
+```{r echo=FALSE}
+imagen1 <- ggdraw() + draw_image(paste(figures,"shinyio1.png",sep="/"))
+imagen1
+```
+
+## Registrando una cuenta
+
+```{r echo=FALSE}
+imagen1 <- ggdraw() + draw_image(paste(figures,"shinyio2.png",sep="/"))
+imagen1
+```
+
+## Registrando una cuenta
+
+```{r echo=FALSE}
+imagen1 <- ggdraw() + draw_image(paste(figures,"shinyio3.png",sep="/"))
+imagen1
+```
+
+## Tenemos que instalar `rsconnect`
+
+La función de esta librería es conectar nuestra cuenta de Shiny.io con nuestro R Studio local
+
+```
+install.packages('rsconnect')
+```
+
+## Autorizar nuestro R Studio para subir aplicaciones
+
+```
+rsconnect::setAccountInfo(name='diego-curso',
+			  token='C37196EE59FCD5123518E4F0AEB843B6',
+			  secret='<SECRET>')
+```
+
+# Revisión de las estructuras hasta el momento
+
+## `sidebarLayout`
+
+```
+    sidebarLayout(
+      sidebarPanel( ),
+      mainPanel( )
+    )
+```
+
+
+## `tabsetPanel`
+
+```
+  tabsetPanel(
+    tabPanel( ),
+    tabPanel( ),
+    tabPanel( )
+  )
+```
+
+## Podemos combinarlas
+
+```
+  tabsetPanel(
+    tabPanel(sidebarLayout(
+      sidebarPanel( ),
+      mainPanel( )
+    )),
+    tabPanel( ),
+    tabPanel( )
+  )
+```
+
+## Introducción a `shinydashboard`
+
+```{r echo=FALSE, fig.height=2, fig.width=4}
+imagen1 <- ggdraw() + draw_image(paste(figures,"dashboard1.png",sep="/"))
+imagen1
+```
+
+```
+  dashboardPage(
+    dashboardHeader(),
+    dashboardSidebar(),
+    dashboardBody()
+  )
+```
+
+## Introducción a `shinydashboard`
+
+```{r echo=FALSE, fig.height=2, fig.width=4}
+imagen1 <- ggdraw() + draw_image(paste(figures,"dashboard1.png",sep="/"))
+imagen1
+```
+
+```
+header <- dashboardHeader()
+
+sidebar <- dashboardSidebar()
+
+body <- dashboardBody()
+
+dashboardPage(header, sidebar, body)
+```
+
+
+

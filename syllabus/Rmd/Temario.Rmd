@@ -74,13 +74,13 @@ $\text{ }$
 
 ## Datos de pago
 
-**Precio: $1,500 por persona.**  
+**Precio: $xxxxxxx por persona.**  
 
 Pago vía transferencia interbancaria (SPEI):  
 
 **BBVA Clabe Interbancaria.**  
 
-**012 180 01512457906 4**  
+**xxxxxxxxxxxxxxxxxxxxxx**  
 
 Concepto: Curso *"Nombre Apellido"*
 

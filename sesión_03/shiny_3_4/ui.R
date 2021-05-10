@@ -11,6 +11,22 @@ shinyUI(
             sidebarMenu(
             h5("Sistema de información económica", align = "center"),
             menuItem("Inicio", tabName = "inicio", icon = icon("home")),
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             menuItem("Objetivos", tabName = "objetivos", icon = icon("bullseye")),
             menuItem("Info económica", icon = icon("info"), startExpanded = FALSE,
                      menuSubItem("Empleo", tabName = "briefcase"),

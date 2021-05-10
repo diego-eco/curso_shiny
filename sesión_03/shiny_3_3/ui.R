@@ -43,7 +43,42 @@ shinyUI(
                 ),
                 
                 tabItem(tabName = "industry",
-                        h2("Esta es la sección de producto")
+                        h2("Esta es la sección de industria"),
+                        fluidRow(
+                            column(9,
+                                   h5("La estructura es la siguiente"),
+                                   br(),
+                                   br(),
+                                   "Para comenzar, presentamos ...",
+                                   "En segundo lugar...",
+                                   "En tercer lugar ..."
+                                   ),
+                            column(3,
+                                   h5("Segundas columnas"),
+                                   br(),
+                                   br(),
+                                   "Para comenzar, presentamos ...",
+                                   "En segundo lugar...",
+                                   "En tercer lugar ..."
+                            )
+                        ),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        br(),
+                        fluidRow(
+                            column(6,
+                                   box(title = "Esta es la caja 1", width = NULL, solidHeader = T)
+                                   ),
+                            column(6,
+                                   box(title = "Esta es la caja 2", width = NULL, solidHeader = F)
+                                   )
+                        )
                 )
             )
         )

@@ -15,7 +15,7 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r include=FALSE}
 # Configuración y directorios
 
 rm(list = ls())
@@ -26,9 +26,69 @@ datos <- "C:/GitHub/curso_shiny/figures"
 figures <- "C:/GitHub/curso_shiny/figures"
 ```
 
-# Introducción.
+
+# Recap
+
+## `sidebarLayout`
+
+```
+    sidebarLayout(
+      sidebarPanel( ),
+      mainPanel( )
+    )
+```
+
+
+## `tabsetPanel` y `navlistPanel()`
+
+```
+  tabsetPanel(
+    tabPanel( ),
+    tabPanel( ),
+    tabPanel( )
+  )
+```
+
+## `library(shinydashboard)`
+
+```
+  dashboardPage(
+    dashboardHeader(),
+    dashboardSidebar(),
+    dashboardBody()
+  )
+```
+
+## `library(shinydashboard)`
+
+Dentro de `dashboardBody()` podemos usar: 
+
+```
+ fluidRow() 
+ 
+ column(width = 4, )
+ 
+ box(title = "Box title", "Box content")
+```
+
+# Podemos combinar todas las estructuras anteriores
+
+https://shiny.rstudio.com/articles/layout-guide.html
+
+https://rstudio.github.io/shinydashboard/structure.html#structure-overview
+
+# 2da mitad del curso 
+
+## Backend de la aplicación
+
+`shinyServer(function(input, output) {})`
 
 * Importando y almacenando en server base de dato: Buenas prácticas.
+
 * Render de gráficas estáticas con ggplot.
+
 * Render de gráficas interactivas con plotly.
+
 * Tablas interactivas con DT.
+
+

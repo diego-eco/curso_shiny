@@ -26,9 +26,12 @@ datos <- "C:/GitHub/curso_shiny/figures"
 figures <- "C:/GitHub/curso_shiny/figures"
 ```
 
-# Introducción.
+# Continuación de función server
 
 * Controles y entrada de usuario: Select, slider, input.
 * Funciones reactivas: `server(input, output)`. [Ejemplo](https://shiny.rstudio.com/gallery/single-file-shiny-app.html)
 * Contexto reactivo.
 * Funciones render y output.
+
+
+

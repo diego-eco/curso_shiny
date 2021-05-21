@@ -12,8 +12,8 @@ fluidPage(
                  h2("Nuestra primer gráfica interactiva con input de usuario"),
                  hr(),
                  linebreaks(1),
-                 selectInput("xvar", label = h4(""), 
-                             choices = c("Desempleo","Inflación"), 
+                 selectInput("selec_var", label = h4("Variable"), 
+                             choices = variables, # c("Desempleo","Inflación"), 
                              selected = 1),
                  linebreaks(1),
                  plotlyOutput("plot1_ly")
@@ -27,8 +27,8 @@ fluidPage(
                  h2("Nuestra primer tabla interactiva con input de usuario"),
                  hr(),
                  linebreaks(1),
-                 selectInput("xvar", label = h4(""), 
-                             choices = c("Desempleo","Inflación"), 
+                 selectInput("selec_var2", label = h4("Variable"), 
+                             choices = variables, # c("Desempleo","Inflación"), 
                              selected = 1),
                  linebreaks(1),
                  DTOutput('data_dt')

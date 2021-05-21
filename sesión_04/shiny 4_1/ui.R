@@ -10,14 +10,19 @@ fluidPage(
         "Gráficas",
         tabPanel("ggplot",
                  
-                 
-                 
+                 h1("Nuestra primer gráfica"),
+                 hr(),
+                 linebreaks(3),
+                 plotOutput("plot1", brush = "plot_brush"),
+                 tableOutput("data_brush")
                  ),
         
         tabPanel("plotly",
                  
-                 
-                 
+                 h1("Gráfica plotly"),
+                 hr(),
+                 linebreaks(3),
+                 plotlyOutput("plot1_ly")
                  ),
         
         "-----",
@@ -26,12 +31,17 @@ fluidPage(
         
         tabPanel("Estáticas",
                  
-                 
+                 h1("Nuestra primer tabla"),
+                 hr(),
+                 linebreaks(3),
+                 tableOutput("data")
                  ),
         
         tabPanel("Interactivas",
-                 
-                 
+                 h1("Nuestra primer tabla interactiva"),
+                 hr(),
+                 linebreaks(3),
+                 DTOutput("data_dt")
                  )
     )
 )

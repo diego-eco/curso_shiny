@@ -22,7 +22,7 @@ fluidPage(
                  linebreaks(1),
                  tabsetPanel(
                      tabPanel("Gráfica",linebreaks(1),plotlyOutput("plot1_ly")),
-                     tabPanel("Datos",linebreaks(1),DTOutput('data_dt'))
+                     tabPanel("Datos",linebreaks(1),DTOutput('data_dt1'))
                  )
                  ),
         
@@ -34,14 +34,14 @@ fluidPage(
                  h1("Nuestra primer tabla"),
                  hr(),
                  linebreaks(3),
-                 tableOutput("dat")
+                 tableOutput("data")
                  ),
         
         tabPanel("Interactivas",
                  h1("Nuestra primer tabla interactiva"),
                  hr(),
                  linebreaks(1),
-                 DTOutput('data_d')
+                 DTOutput('data_dt2')
                  )
     )
 )

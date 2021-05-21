@@ -51,11 +51,19 @@ server <- function(input, output) {
   
 # https://cran.r-project.org/web/packages/DT/DT.pdf
   
-  output$data_dt = renderDT(
+  output$data_dt1 = renderDT(
     penguins,
     class = "compact",  # display, cell-border, compact , hover, stripe
     caption = "Tabla 1", # "Tabla 1", NULL
     style = "bootstrap4", # 'auto', 'default', 'bootstrap', or 'bootstrap4'
+    width = NULL
+  )
+  
+  output$data_dt2 = renderDT(
+    penguins,
+    class = "hover",  # display, cell-border, compact , hover, stripe
+    caption = "Tabla 1", # "Tabla 1", NULL
+    style = "auto", # 'auto', 'default', 'bootstrap', or 'bootstrap4'
     width = NULL
   )
   

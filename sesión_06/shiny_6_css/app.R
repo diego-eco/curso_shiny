@@ -1,7 +1,6 @@
 library(shiny)
 library(shinydashboard)
 source("global.R")
-source("custom_theme.R")
 source("server.R")
 source("ui.R")
 shinyApp(ui, server)

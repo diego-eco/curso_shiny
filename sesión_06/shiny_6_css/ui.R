@@ -2,6 +2,8 @@ library(shinydashboard)
 library(dashboardthemes)
 library(shinyWidgets)
 
+source("custom_theme.R")
+
 customLogo <- shinyDashboardLogoDIY(
    boldText = "Población"
    ,mainText = "& Economía"

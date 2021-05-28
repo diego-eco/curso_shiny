@@ -11,7 +11,7 @@ El curso está estructurado en 6 sesiones en línea. (12 horas en total)
 Requisitos:
 - Windows/Mac con R, RStudio, cuenta y distribución de Github (Github Desktop, Sourcetree, GitKraken). Ver documento con instrucciones de instalación paso a paso.
 
-## Día 1 Viernes 23 de abril
+## Día 1
 
 * R necesario para implementar Shiny Apps: 
   + Importar una base de datos (csv, xls, dta).
@@ -20,35 +20,35 @@ Requisitos:
 * Gráficas interactivas con plotly.
 * Revisión de [Shiny App muestra](https://diego-lopezt.shinyapps.io/Poblacion_Economia/): Elementos, capacidades y limitaciones de Shiny.
 
-## Día 2 Viernes 30 de abril
+## Día 2 
 
 * Conceptos y estructura de un sitio web:
   + Host, Server, Frontend, Backend
 * Estructura de archivos de Shiny App: UI, Server, app, global, css.
 * Creación de repositorio en Github y *commit* de R project de Shiny App vacía.
 
-## Día 3 Viernes 7 de mayo
+## Día 3 
 
 * Funciones básicas de Shiny: Convirtiendo R a HTML.
 * Introducción a *shinydashboard:* Estructura general: Header, Sidebar & Body.
 * Layout de aplicación: Navlist y Grid Layout.
 * Creación de primer Shiny App. Página de bienvenida.
 
-## Día 4 Viernes 14 de mayo
+## Día 4 
 
 * Importando y almacenando en server base de dato: Buenas prácticas.
 * Render de gráficas estáticas con ggplot.
 * Render de gráficas interactivas con plotly.
 * Tablas interactivas con DT.
 
-## Día 5 Viernes 21 de mayo
+## Día 5
 
 * Controles y entrada de usuario: Select, slider, input.
 * Funciones reactivas: `server(input, output)`. [Ejemplo](https://shiny.rstudio.com/gallery/single-file-shiny-app.html)
 * Contexto reactivo.
 * Funciones render y output.
 
-## Día 6 Viernes 28 de mayo
+## Día 6
 
 * Integrando input, output: Buenas prácticas de manejo de funciones reactivas.
 * Personalizando *shinydashboard* e incorporando CSS externo (plantillas).

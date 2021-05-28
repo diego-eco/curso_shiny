@@ -884,7 +884,7 @@ plot_ly(sie) %>%
          xaxis = list(title = ""),
          yaxis = list (title = "Porcentaje %"))%>%
   layout(yaxis = list(titlefont = list(size = 10), tickfont = list(size = 10)) ) %>%
-layout(legend = list(orientation = 'h'))
+layout(legend = list(orientation = 'v'))
 ```
 
 

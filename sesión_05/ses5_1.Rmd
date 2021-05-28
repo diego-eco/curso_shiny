@@ -15,7 +15,7 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r include=FALSE}
 # Configuración y directorios
 
 rm(list = ls())

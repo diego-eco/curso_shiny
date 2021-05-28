@@ -15,7 +15,7 @@ always_allow_html: yes
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r include=FALSE}
 # Configuración y directorios
 
 rm(list = ls())
@@ -26,9 +26,15 @@ datos <- "C:/GitHub/curso_shiny/figures"
 figures <- "C:/GitHub/curso_shiny/figures"
 ```
 
-# Introducción.
+# Sesión 6
 
-* Integrando input, output: Buenas prácticas de manejo de funciones reactivas.
+* Descarga de archivos desde Shiny
+
+* Incorporando página de acceso con credenciales
+
 * Personalizando *shinydashboard* e incorporando CSS externo (plantillas).
-* Shiny App: Gráficos con input de usuario. [Ejemplo](https://diego-lopezt.shinyapps.io/Mapas_ENSANUT/)
+
 * Consejos y recomendaciones para el aprendizaje autónomo.
+
+
+

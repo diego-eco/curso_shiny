@@ -9,26 +9,26 @@ customTheme <- shinyDashboardThemeDIY(
   ,successFontColor = "rgb(0,0,0)"
   ,warningFontColor = "rgb(0,0,0)"
   ,dangerFontColor = "rgb(0,0,0)"
-  ,bodyBackColor = "rgb(248,248,248)"
+  ,bodyBackColor = "rgb(255,255,255)"
   
   ### header
   ,logoBackColor = "rgb(23,103,124)"
   
-  ,headerButtonBackColor = "rgb(238,238,238)"
-  ,headerButtonIconColor = "rgb(75,75,75)"
-  ,headerButtonBackColorHover = "rgb(210,210,210)"
-  ,headerButtonIconColorHover = "rgb(0,0,0)"
+  ,headerButtonBackColor = "rgb(23,103,124)"
+  ,headerButtonIconColor = "rgb(248,248,248)"
+  ,headerButtonBackColorHover = "rgb(31,134,160)"
+  ,headerButtonIconColorHover = "rgb(248,248,248)"
   
-  ,headerBackColor = "rgb(238,238,238)"
+  ,headerBackColor =  "rgb(23,103,124)"
   ,headerBoxShadowColor = "#aaaaaa"
   ,headerBoxShadowSize = "2px 2px 2px"
   
   ### sidebar
   ,sidebarBackColor = cssGradientThreeColors(
     direction = "down"
-    ,colorStart = "rgb(168,144,80)"
-    ,colorMiddle = "rgb(168,144,80)"
-    ,colorEnd = "rgb(168,144,80)"
+    ,colorStart = "rgb(20,97,117)"
+    ,colorMiddle = "rgb(56,161,187)"
+    ,colorEnd = "rgb(3,22,56)"
     ,colorStartPos = 0
     ,colorMiddlePos = 50
     ,colorEndPos = 100

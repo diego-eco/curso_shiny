@@ -6,34 +6,17 @@ library(shiny)
 
 shinyUI(
     dashboardPage(
-        dashboardHeader(title = "Bienvenidos"),
+        dashboardHeader(title = "BBVA Research"),
         dashboardSidebar(
             sidebarMenu(
             h5("Sistema de información económica", align = "center"),
-            menuItem("Inicio", tabName = "inicio", icon = icon("home")),
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            menuItem("Objetivos", tabName = "objetivos", icon = icon("bullseye")),
-            menuItem("Info económica", icon = icon("info"), startExpanded = FALSE,
-                     menuSubItem("Empleo", tabName = "briefcase"),
-                     menuSubItem("Producto", tabName = "industry")
+            menuItem("INEGI", icon = icon("info"), startExpanded = FALSE,
+                     menuSubItem("PIB", tabName = "industry"),
+                     menuSubItem("Empleo", tabName = "briefcase")
             ),
-            menuItem("Sobre nosotros", tabName = "team", icon = icon("users"))
-            )
+            menuItem("CNBV", icon = icon("info"), startExpanded = FALSE,
+                     menuSubItem("Cartera de crédito", tabName = "credit-card")
+            ),
         ),
         dashboardBody(
             tabItems(

@@ -24,12 +24,38 @@ matrimonios_tipo_anio <- read_excel("www/pastel_diego_matrimonios.xls")
 # Bases de datos mortalidad
 mort_sexo_anio <- read_excel("www/Mortalidad_sexo_anio.xls")
 
+
+
+
+
+
+
+
 # Bases de datos inflación desempleo desde Dropbox
 
 token <- readRDS("www/token.rds")
 drop_acc(dtoken = token)
 data <- drop_read_csv("base_limpia.csv",dtoken=token)
 variables <- colnames(data)[-1]
+
+
+
+
+
+
+
+# Misterio
+# carpeta_temp <- drop_download("archivo.xls")
+# data <- read_xls("archivo.xls",dtoken=token)
+
+
+
+
+
+
+
+
+
 
 
 

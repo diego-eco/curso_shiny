@@ -12,14 +12,14 @@ customTheme <- shinyDashboardThemeDIY(
   ,bodyBackColor = "rgb(255,255,255)"
   
   ### header
-  ,logoBackColor = "rgb(23,103,124)"
+  ,logoBackColor = "rgb(7,33,70)"
   
-  ,headerButtonBackColor = "rgb(23,103,124)"
+  ,headerButtonBackColor = "rgb(7,33,70)"
   ,headerButtonIconColor = "rgb(248,248,248)"
   ,headerButtonBackColorHover = "rgb(31,134,160)"
   ,headerButtonIconColorHover = "rgb(248,248,248)"
   
-  ,headerBackColor =  "rgb(23,103,124)"
+  ,headerBackColor =  "rgb(7,33,70)"
   ,headerBoxShadowColor = "#aaaaaa"
   ,headerBoxShadowSize = "2px 2px 2px"
   
